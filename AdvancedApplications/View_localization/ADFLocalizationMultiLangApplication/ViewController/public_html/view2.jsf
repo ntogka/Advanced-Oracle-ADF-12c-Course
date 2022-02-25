@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:c="http://java.sun.com/jsp/jstl/core" locale="#{myBean.currentLocale}">
+  <c:set var="viewcontrollerBundle" value="#{adfBundle['view.ViewControllerBundle']}"/>
+  <af:document title="view2.jsf" id="d1">
+    <af:messages id="m1"/>
+    <af:form id="f1">
+      <af:pageTemplate viewId="/templateDef1.jsf" id="pt1">
+        <f:facet name="main">
+          <af:panelBox text="#{viewcontrollerBundle.IamView2}" id="pb1">
+            <f:facet name="toolbar"/>
+            <af:panelCollection id="pc1">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar id="t2">
+                  <af:button actionListener="#{bindings.CreateInsert.execute}" text="#{viewcontrollerBundle.New}"
+                             disabled="#{!bindings.CreateInsert.enabled}" id="b1"/>
+                  <af:button actionListener="#{bindings.Delete.execute}" text="#{viewcontrollerBundle.Delete}"
+                             disabled="#{!bindings.Delete.enabled}" id="b2"/>
+                  <af:button actionListener="#{bindings.Commit.execute}" text="#{viewcontrollerBundle.Save}"
+                             disabled="#{!bindings.Commit.enabled}" id="b3"/>
+                  <af:button actionListener="#{bindings.Rollback.execute}" text="#{viewcontrollerBundle.Cancel}"
+                             disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b4">
+                    <af:resetActionListener/>
+                  </af:button>
+                  <af:button text="#{viewcontrollerBundle.GotoView1}" id="b5" action="v1"/>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.DepartmentsView1.collectionModel}" var="row"
+                        rows="#{bindings.DepartmentsView1.rangeSize}"
+                        emptyText="#{bindings.DepartmentsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.DepartmentsView1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.DepartmentsView1.collectionModel.makeCurrent}"
+                        rowSelection="single" fetchSize="#{bindings.DepartmentsView1.rangeSize}"
+                        filterModel="#{bindings.DepartmentsView1Query.queryDescriptor}" filterVisible="true"
+                        queryListener="#{bindings.DepartmentsView1Query.processQuery}" varStatus="vs" id="t1"
+                        partialTriggers="::b1 ::b2">
+                <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentId.name}" filterable="true"
+                           sortable="true" headerText="#{viewcontrollerBundle.DEPARTMENT_ID}" id="c1">
+                  <af:inputText value="#{row.bindings.DepartmentId.inputValue}"
+                                label="#{bindings.DepartmentsView1.hints.DepartmentId.label}"
+                                required="#{bindings.DepartmentsView1.hints.DepartmentId.mandatory}"
+                                columns="#{bindings.DepartmentsView1.hints.DepartmentId.displayWidth}"
+                                maximumLength="#{bindings.DepartmentsView1.hints.DepartmentId.precision}"
+                                shortDesc="#{bindings.DepartmentsView1.hints.DepartmentId.tooltip}" id="it1">
+                    <f:validator binding="#{row.bindings.DepartmentId.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.DepartmentsView1.hints.DepartmentId.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentName.name}" filterable="true"
+                           sortable="true" headerText="#{viewcontrollerBundle.DEPARTMENT_NAME}" id="c2">
+                  <af:inputText value="#{row.bindings.DepartmentName.inputValue}"
+                                label="#{bindings.DepartmentsView1.hints.DepartmentName.label}"
+                                required="#{bindings.DepartmentsView1.hints.DepartmentName.mandatory}"
+                                columns="#{bindings.DepartmentsView1.hints.DepartmentName.displayWidth}"
+                                maximumLength="#{bindings.DepartmentsView1.hints.DepartmentName.precision}"
+                                shortDesc="#{bindings.DepartmentsView1.hints.DepartmentName.tooltip}" id="it2">
+                    <f:validator binding="#{row.bindings.DepartmentName.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.DepartmentsView1.hints.ManagerId.name}" filterable="true"
+                           sortable="true" headerText="#{viewcontrollerBundle.MANAGER}" id="c3">
+                  <af:inputText value="#{row.bindings.ManagerId.inputValue}"
+                                label="#{bindings.DepartmentsView1.hints.ManagerId.label}"
+                                required="#{bindings.DepartmentsView1.hints.ManagerId.mandatory}"
+                                columns="#{bindings.DepartmentsView1.hints.ManagerId.displayWidth}"
+                                maximumLength="#{bindings.DepartmentsView1.hints.ManagerId.precision}"
+                                shortDesc="#{bindings.DepartmentsView1.hints.ManagerId.tooltip}" id="it3">
+                    <f:validator binding="#{row.bindings.ManagerId.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.DepartmentsView1.hints.ManagerId.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.DepartmentsView1.hints.LocationId.name}" filterable="true"
+                           sortable="true" headerText="#{viewcontrollerBundle.LOCATION}" id="c4">
+                  <af:inputText value="#{row.bindings.LocationId.inputValue}"
+                                label="#{bindings.DepartmentsView1.hints.LocationId.label}"
+                                required="#{bindings.DepartmentsView1.hints.LocationId.mandatory}"
+                                columns="#{bindings.DepartmentsView1.hints.LocationId.displayWidth}"
+                                maximumLength="#{bindings.DepartmentsView1.hints.LocationId.precision}"
+                                shortDesc="#{bindings.DepartmentsView1.hints.LocationId.tooltip}" id="it4">
+                    <f:validator binding="#{row.bindings.LocationId.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.DepartmentsView1.hints.LocationId.format}"/>
+                  </af:inputText>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelBox>
+        </f:facet>
+      </af:pageTemplate>
+    </af:form>
+  </af:document>
+</f:view>
