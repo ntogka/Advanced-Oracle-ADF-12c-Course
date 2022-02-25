@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">userEmps</property>
+      <property
+         name="x">38.5</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>userEmps&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">229.79883</property>
+      <property
+         name="page">/userEmps.jsf</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">login</property>
+      <property
+         name="x">261.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>login&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">182.29883</property>
+      <property
+         name="page">/login.jsf</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule4">
+      <property
+         name="activityId">*</property>
+      <property
+         name="x">326.0</property>
+      <property
+         name="y">319.29883</property>
+   </WildcardControlFlowRule>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="WildcardControlFlowRule4"
+      to="View3">
+      <property
+         name="fromOutcome">login</property>
+      <property
+         name="sdm:polyPoints">T50,326.0,276.94824,261.0,235.94824,B50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="WildcardControlFlowRule4"
+      to="View2">
+      <property
+         name="fromOutcome">emps</property>
+      <property
+         name="sdm:polyPoints">L50,290.0,319.44824,79.5,229.44824,R50</property>
+   </ControlFlowCase>
+</SDM>
