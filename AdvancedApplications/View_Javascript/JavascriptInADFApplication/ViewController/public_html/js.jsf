@@ -1,0 +1,346 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="js.jsf" id="d1" initialFocusId="t1">
+    <af:messages id="m1"/>
+    <af:form id="f1">
+      <af:panelSplitter id="ps1" splitterPosition="500">
+        <f:facet name="first">
+          <af:panelGroupLayout id="pgl1" clientComponent="true" layout="vertical">
+            <af:button text="button 1" id="b1" action="#{myBean.button1Action}"/>
+            <af:button text="button 2" id="b2"/>
+            <af:table value="#{bindings.DepartmentsView1.collectionModel}" var="row"
+                      rows="#{bindings.DepartmentsView1.rangeSize}"
+                      emptyText="#{bindings.DepartmentsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0" selectedRowKeys="#{bindings.DepartmentsView1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.DepartmentsView1.collectionModel.makeCurrent}" rowSelection="single"
+                      fetchSize="#{bindings.DepartmentsView1.rangeSize}"
+                      filterModel="#{bindings.DepartmentsView1Query.queryDescriptor}" filterVisible="true"
+                      queryListener="#{bindings.DepartmentsView1Query.processQuery}" varStatus="vs" id="t1">
+              <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentId.name}" filterable="true"
+                         sortable="true" headerText="#{bindings.DepartmentsView1.hints.DepartmentId.label}" id="c1">
+                <af:outputText value="#{row.DepartmentId}"
+                               shortDesc="#{bindings.DepartmentsView1.hints.DepartmentId.tooltip}" id="ot3">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.DepartmentsView1.hints.DepartmentId.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentName.name}" filterable="true"
+                         sortable="true" headerText="#{bindings.DepartmentsView1.hints.DepartmentName.label}" id="c2">
+                <af:outputText value="#{row.DepartmentName}"
+                               shortDesc="#{bindings.DepartmentsView1.hints.DepartmentName.tooltip}" id="ot4"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.DepartmentsView1.hints.ManagerId.name}" filterable="true"
+                         sortable="true" headerText="#{bindings.DepartmentsView1.hints.ManagerId.label}" id="c3">
+                <af:outputText value="#{row.ManagerId}" shortDesc="#{bindings.DepartmentsView1.hints.ManagerId.tooltip}"
+                               id="ot5">
+                  <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.ManagerId.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.DepartmentsView1.hints.LocationId.name}" filterable="true"
+                         sortable="true" headerText="#{bindings.DepartmentsView1.hints.LocationId.label}" id="c4">
+                <af:outputText value="#{row.LocationId}"
+                               shortDesc="#{bindings.DepartmentsView1.hints.LocationId.tooltip}" id="ot6">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.DepartmentsView1.hints.LocationId.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:clientListener method="tableDBClick" type="dblClick"/>
+              <af:serverListener type="callTableServer" method="#{myBean.deptTableDBClickListener}"/>
+            <af:clientAttribute name="deptName" value="#{bindings.DepartmentName.inputValue}"/>
+            </af:table>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p2" contentDelivery="lazyUncached">
+              <af:dialog id="d3" title="Dept Employees">
+                <f:facet name="buttonBar"/>
+                <af:table value="#{bindings.EmployeesView3.collectionModel}" var="row"
+                          rows="#{bindings.EmployeesView3.rangeSize}"
+                          emptyText="#{bindings.EmployeesView3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.EmployeesView3.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.EmployeesView3.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.EmployeesView3.rangeSize}"
+                          filterModel="#{bindings.EmployeesView3Query.queryDescriptor}" filterVisible="true"
+                          queryListener="#{bindings.EmployeesView3Query.processQuery}" varStatus="vs" id="t2"
+                          width="700">
+                  <af:column sortProperty="#{bindings.EmployeesView3.hints.EmployeeId.name}" filterable="true"
+                             sortable="true" headerText="#{bindings.EmployeesView3.hints.EmployeeId.label}" id="c5">
+                    <af:outputText value="#{row.EmployeeId}"
+                                   shortDesc="#{bindings.EmployeesView3.hints.EmployeeId.tooltip}" id="ot7">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.EmployeesView3.hints.EmployeeId.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.EmployeesView3.hints.FirstName.name}" filterable="true"
+                             sortable="true" headerText="#{bindings.EmployeesView3.hints.FirstName.label}" id="c6">
+                    <af:outputText value="#{row.FirstName}"
+                                   shortDesc="#{bindings.EmployeesView3.hints.FirstName.tooltip}" id="ot8"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.EmployeesView3.hints.LastName.name}" filterable="true"
+                             sortable="true" headerText="#{bindings.EmployeesView3.hints.LastName.label}" id="c7">
+                    <af:outputText value="#{row.LastName}" shortDesc="#{bindings.EmployeesView3.hints.LastName.tooltip}"
+                                   id="ot9"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.EmployeesView3.hints.Email.name}" filterable="true"
+                             sortable="true" headerText="#{bindings.EmployeesView3.hints.Email.label}" id="c8">
+                    <af:outputText value="#{row.Email}" shortDesc="#{bindings.EmployeesView3.hints.Email.tooltip}"
+                                   id="ot10"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.EmployeesView3.hints.PhoneNumber.name}" filterable="true"
+                             sortable="true" headerText="#{bindings.EmployeesView3.hints.PhoneNumber.label}" id="c9">
+                    <af:outputText value="#{row.PhoneNumber}"
+                                   shortDesc="#{bindings.EmployeesView3.hints.PhoneNumber.tooltip}" id="ot11"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.EmployeesView3.hints.HireDate.name}" filterable="true"
+                             sortable="true" headerText="#{bindings.EmployeesView3.hints.HireDate.label}" id="c10">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{bindings.EmployeesView3Query.queryDescriptor.filterConjunctionCriterion.criterionMap.HireDate.value}"
+                                    id="id2">
+                        <af:convertDateTime pattern="#{bindings.EmployeesView3.hints.HireDate.format}"/>
+                      </af:inputDate>
+                    </f:facet>
+                    <af:outputText value="#{row.HireDate}" shortDesc="#{bindings.EmployeesView3.hints.HireDate.tooltip}"
+                                   id="ot12">
+                      <af:convertDateTime pattern="#{bindings.EmployeesView3.hints.HireDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.EmployeesView3.hints.JobId.name}" filterable="true"
+                             sortable="true" headerText="#{bindings.EmployeesView3.hints.JobId.label}" id="c11">
+                    <af:outputText value="#{row.JobId}" shortDesc="#{bindings.EmployeesView3.hints.JobId.tooltip}"
+                                   id="ot13"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.EmployeesView3.hints.Salary.name}" filterable="true"
+                             sortable="true" headerText="#{bindings.EmployeesView3.hints.Salary.label}" id="c12">
+                    <af:outputText value="#{row.Salary}" shortDesc="#{bindings.EmployeesView3.hints.Salary.tooltip}"
+                                   id="ot14">
+                      <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeesView3.hints.Salary.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.EmployeesView3.hints.CommissionPct.name}" filterable="true"
+                             sortable="true" headerText="#{bindings.EmployeesView3.hints.CommissionPct.label}" id="c13">
+                    <af:outputText value="#{row.CommissionPct}"
+                                   shortDesc="#{bindings.EmployeesView3.hints.CommissionPct.tooltip}" id="ot15">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.EmployeesView3.hints.CommissionPct.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.EmployeesView3.hints.ManagerId.name}" filterable="true"
+                             sortable="true" headerText="#{bindings.EmployeesView3.hints.ManagerId.label}" id="c14">
+                    <af:outputText value="#{row.ManagerId}"
+                                   shortDesc="#{bindings.EmployeesView3.hints.ManagerId.tooltip}" id="ot16">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.EmployeesView3.hints.ManagerId.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.EmployeesView3.hints.DepartmentId.name}" filterable="true"
+                             sortable="true" headerText="#{bindings.EmployeesView3.hints.DepartmentId.label}" id="c15">
+                    <af:outputText value="#{row.DepartmentId}"
+                                   shortDesc="#{bindings.EmployeesView3.hints.DepartmentId.tooltip}" id="ot17">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.EmployeesView3.hints.DepartmentId.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.EmployeesView3.hints.EmpImage.name}" sortable="true"
+                             headerText="#{bindings.EmployeesView3.hints.EmpImage.label}" filterable="true" id="c16">
+                    <af:outputText value="#{row.EmpImage}" shortDesc="#{bindings.EmployeesView3.hints.EmpImage.tooltip}"
+                                   id="ot18"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.EmployeesView3.hints.EmpDoc.name}" filterable="true"
+                             sortable="true" headerText="#{bindings.EmployeesView3.hints.EmpDoc.label}" id="c17">
+                    <af:outputText value="#{row.EmpDoc}" shortDesc="#{bindings.EmployeesView3.hints.EmpDoc.tooltip}"
+                                   id="ot19"/>
+                  </af:column>
+                </af:table>
+              </af:dialog>
+            </af:popup>
+          </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="second">
+          <af:panelFormLayout id="pfl1">
+            <f:facet name="footer">
+              <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                <af:dialog id="d2">
+                  <f:facet name="buttonBar"/>
+                  <af:outputText value="OPen from JS" id="ot1"/>
+                </af:dialog>
+              </af:popup>
+            </f:facet>
+            <af:inputText label="Control PS Collabsed" id="it1">
+              <af:clientListener method="collabsePS" type="click"/>
+            </af:inputText>
+            <af:inputText label="H Layout" id="it2">
+              <af:clientListener method="hlayout" type="click"/>
+            </af:inputText>
+            <af:inputText label="V Layout" id="it3">
+              <af:clientListener method="vlayout" type="dblClick"/>
+            </af:inputText>
+            <af:inputText label="Invoke Button 1" id="it4">
+              <af:clientListener method="pressButton" type="dblClick"/>
+            </af:inputText>
+            <af:inputText label="Show Popup" id="it5">
+              <af:clientListener method="openPopup" type="valueChange"/>
+            </af:inputText>
+            <af:inputText label="Label 1" id="it6">
+              <af:clientListener method="tabIndex" type="keyPress"/>
+              <af:clientAttribute name="prevComponentId" value="it5"/>
+              <af:clientAttribute name="nextComponentId" value="it7"/>
+            </af:inputText>
+            <af:inputText label="Email" id="it7">
+              <af:clientListener method="tabIndex" type="keyPress"/>
+              <af:clientAttribute name="nextComponentId" value="it8"/>
+              <af:clientAttribute name="prevComponentId" value="it6"/>
+              <af:clientListener method="checkValue" type="valueChange"/>
+            </af:inputText>
+            <af:inputText label="Confirm-Email" id="it8">
+              <af:clientListener method="tabIndex" type="keyPress"/>
+              <af:clientAttribute name="prevComponentId" value="it7"/>
+              <af:clientAttribute name="nextComponentId" value="id1"/>
+              <af:clientListener method="checkValue" type="valueChange"/>
+            </af:inputText>
+            <af:inputDate label="Label 1" id="id1">
+              <af:clientListener method="disableInputDate" type="keyPress"/>
+            </af:inputDate>
+            <af:outputText value="Put mouse over here" id="ot2">
+              <af:clientListener method="openPopup" type="mouseOver"/>
+            </af:outputText>
+          </af:panelFormLayout>
+        </f:facet>
+      </af:panelSplitter>
+    </af:form>
+    <f:facet name="metaContainer">
+      <af:resource type="javascript">
+        function displayAlert(event)
+        {
+          alert("I am in JS function");
+        }
+        
+        function collabsePS(event)
+      {
+          comp = AdfPage.PAGE.findComponent('ps1');
+          if(comp.getProperty("collapsed") == false)
+          {
+            comp.setProperty("collapsed", true); 
+          }
+          else
+          {
+            comp.setProperty("collapsed", false);
+          }
+        }
+        
+        
+         function hlayout (event)
+          {
+            var comp = AdfPage.PAGE.findComponent('pgl1'); 
+            comp.setProperty("layout", "horizontal"); 
+          }
+        
+          function vlayout (event)
+          {
+            var comp = AdfPage.PAGE.findComponent('pgl1'); 
+            comp.setProperty("layout", "vertical"); 
+          }
+          
+          function pressButton(event)
+          {
+            var component = AdfPage.PAGE.findComponentByAbsoluteId('b1');
+            AdfActionEvent.queue(component, component.getPartialSubmit());
+          }
+        
+        
+          function openPopup(evt)
+          {
+            var popup = AdfPage.PAGE.findComponent("p1");
+            popup.show();
+          }
+          
+          function disableInputDate(event)
+          {
+            event.cancel();
+          }
+          
+          function loadPage(event)
+          {
+            var source = event.getSource(); 
+            AdfCustomEvent.queue(source,"callServer",{},false); 
+          }
+          
+          function tableDBClick (event)
+          {
+            var source = event.getSource(); 
+            var deptName = source.getProperty("deptName");
+            AdfCustomEvent.queue(source,"callTableServer",{deptName:deptName},false); 
+          }
+          
+          
+          
+          function tabIndex(event)
+        {
+          var code=event.getKeyCode();
+          var component=event.getSource();
+          
+	  if (!e) var e = window.event;
+          
+	 if(e.shiftKey)
+          {
+            if (code==13)
+            {
+              event.cancel();
+              var prevComponent=AdfPage.PAGE.findComponentByAbsoluteId(component.getProperty("prevComponentId"));
+              prevComponent.focus();  
+            }
+          }
+         else if(code==13)
+          {
+            event.cancel();
+            var nextComponent=AdfPage.PAGE.findComponentByAbsoluteId(component.getProperty("nextComponentId"));
+            nextComponent.focus();
+          }
+        } 
+        
+        
+        <![CDATA[
+        function checkValue(event)
+        {
+          var output1 = document.getElementById('it7::content');
+          var output2 = document.getElementById('it8::content');
+
+          if(output1.value != null && output2.value != null && output1.value != '' && output2.value != '')
+          {
+            if (output1.value == output2.value)
+            {
+              //alert("Equals");
+            }
+            else 
+            {
+            alert("No Equals");
+            }
+          }
+         }
+    ]]>
+    
+    
+    
+    
+    function dis_rightclickNS(e)  
+          {  
+            if ((document.layers || document.getElementById &amp;&amp; !document.all) &amp;&amp; (e.which == 2 || e.which == 3))  
+            {  
+              return false;  
+            }  
+          }  
+          if (document.layers)  
+          {  
+            document.captureEvents(Event.MOUSEDOWN);  
+            document.onmousedown = dis_rightclickNS;  
+          }  
+          else if (document.all &amp;&amp; !document.getElementById)  
+          {  
+            document.onmousedown = dis_rightclickIE;  
+          }  
+          document.oncontextmenu = new Function("return false") 
+          
+      </af:resource>
+    </f:facet>
+    <af:clientListener method="loadPage" type="load"/>
+    <af:serverListener type="callServer" method="#{myBean.pageLoad}"/>
+  </af:document>
+</f:view>
