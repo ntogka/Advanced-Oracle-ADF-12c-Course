@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="depts.jsf" id="d1">
+    <af:messages id="m1"/>
+    <af:form id="f1">
+      <af:panelGroupLayout id="pgl1" partialTriggers="b1">
+        <af:panelFormLayout id="pfl1">
+          <f:facet name="footer">
+            <af:button text="Insert" id="b1" actionListener="#{depts.insertDept}"/>
+          </f:facet>
+          <af:inputText label="Dept Id" id="it1" required="true" binding="#{depts.deptIdComponent}"/>
+          <af:inputText label="Dept Name" id="it2" required="true" binding="#{depts.deptNameComponent}"/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:panelBox text="Inserted Depts" id="pb1" partialTriggers="b3">
+          <f:facet name="toolbar">
+            <af:button text="Save" id="b3" actionListener="#{depts.saveDeptsActionListener}" immediate="true"/>
+          </f:facet>
+          <af:table value="#{bindings.ProgrammaticDepartmentsView1.collectionModel}" var="row"
+                    rows="#{bindings.ProgrammaticDepartmentsView1.rangeSize}"
+                    emptyText="#{bindings.ProgrammaticDepartmentsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0"
+                    selectedRowKeys="#{bindings.ProgrammaticDepartmentsView1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.ProgrammaticDepartmentsView1.collectionModel.makeCurrent}"
+                    rowSelection="single" fetchSize="#{bindings.ProgrammaticDepartmentsView1.rangeSize}" id="t1"
+                    partialTriggers="b2">
+            <af:column id="c3">
+              <af:button actionListener="#{bindings.Delete.execute}" text="Delete" id="b2" immediate="true"/>
+            </af:column>
+            <af:column headerText="#{bindings.ProgrammaticDepartmentsView1.hints.DeprId.label}" id="c1">
+              <af:outputText value="#{row.DeprId}"
+                             shortDesc="#{bindings.ProgrammaticDepartmentsView1.hints.DeprId.tooltip}" id="ot1">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.ProgrammaticDepartmentsView1.hints.DeprId.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column headerText="#{bindings.ProgrammaticDepartmentsView1.hints.DeptName.label}" id="c2">
+              <af:outputText value="#{row.DeptName}"
+                             shortDesc="#{bindings.ProgrammaticDepartmentsView1.hints.DeptName.tooltip}" id="ot2"/>
+            </af:column>
+          </af:table>
+        </af:panelBox>
+      </af:panelGroupLayout>
+    </af:form>
+  </af:document>
+</f:view>

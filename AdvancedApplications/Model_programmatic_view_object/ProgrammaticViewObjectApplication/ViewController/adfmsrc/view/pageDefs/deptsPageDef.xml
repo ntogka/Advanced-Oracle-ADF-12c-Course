@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="deptsPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ProgrammaticDepartmentsView1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ProgrammaticDepartmentsView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ProgrammaticDepartmentsView1Iterator" id="ProgrammaticDepartmentsView1">
+      <nodeDefinition DefName="model.vo.ProgrammaticDepartmentsView" Name="ProgrammaticDepartmentsView10">
+        <AttrNames>
+          <Item Value="DeprId"/>
+          <Item Value="DeptName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ProgrammaticDepartmentsView1Iterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <methodAction id="insertDeptToDatabase" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="insertDeptToDatabase" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.insertDeptToDatabase.dataControl.dataProvider">
+      <NamedData NDName="deptId" NDType="int"/>
+      <NamedData NDName="deptName" NDType="java.lang.String"/>
+    </methodAction>
+    <action id="Commit" DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+  </bindings>
+</pageDefinition>
