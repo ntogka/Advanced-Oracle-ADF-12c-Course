@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="table.jsf" id="d1">
+    <af:messages id="m1"/>
+    <af:form id="f1">
+      <af:panelCollection id="pc1" featuresOff="viewMenu freeze">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.DepartmentsView1.collectionModel}" var="row"
+                  rows="#{bindings.DepartmentsView1.rangeSize}"
+                  emptyText="#{bindings.DepartmentsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  rowBandingInterval="0" selectedRowKeys="#{bindings.DepartmentsView1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.DepartmentsView1.collectionModel.makeCurrent}" rowSelection="single"
+                  fetchSize="#{bindings.DepartmentsView1.rangeSize}"
+                  filterModel="#{bindings.DepartmentsView1Query.queryDescriptor}"
+                  queryListener="#{bindings.DepartmentsView1Query.processQuery}" varStatus="vs" id="t1"
+                  columnStretching="multiple" partialTriggers="cmi5 cmi6"
+                  rowDisclosureListener="#{myBean.rowDisclosureListener}" columnSelection="multiple">
+          <af:column id="c5" width="14" rowHeader="true">
+            <af:outputText value="#{row.index + 1}" id="ot5"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentId.name}" filterable="true"
+                     sortable="true" headerText="#{bindings.DepartmentsView1.hints.DepartmentId.label}" id="c1"
+                     width="33%">
+            <af:outputText value="#{row.DepartmentId}"
+                           shortDesc="#{bindings.DepartmentsView1.hints.DepartmentId.tooltip}" id="ot1">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.DepartmentId.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentName.name}" filterable="true"
+                     sortable="true" headerText="#{bindings.DepartmentsView1.hints.DepartmentName.label}" id="c2"
+                     width="33%">
+            <af:outputText value="#{row.DepartmentName}"
+                           shortDesc="#{bindings.DepartmentsView1.hints.DepartmentName.tooltip}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.DepartmentsView1.hints.ManagerId.name}" filterable="true" sortable="true"
+                     headerText="#{bindings.DepartmentsView1.hints.ManagerId.label}" id="c3" width="33%">
+            <af:outputText value="#{row.ManagerId}" shortDesc="#{bindings.DepartmentsView1.hints.ManagerId.tooltip}"
+                           id="ot3">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.ManagerId.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.DepartmentsView1.hints.LocationId.name}" filterable="true" sortable="true"
+                     headerText="#{bindings.DepartmentsView1.hints.LocationId.label}" id="c4" width="33%">
+            <af:outputText value="#{row.LocationId}" shortDesc="#{bindings.DepartmentsView1.hints.LocationId.tooltip}"
+                           id="ot4">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.LocationId.format}"/>
+            </af:outputText>
+          </af:column>
+          <f:facet name="contextMenu">
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+              <af:menu text="menu 1" id="m2">
+                <af:commandMenuItem actionListener="#{bindings.CreateInsert.execute}" text="New" id="cmi6"/>
+                <af:commandMenuItem actionListener="#{bindings.Delete.execute}" text="Delete" id="cmi5"
+                                    partialSubmit="false"/>
+                <af:commandMenuItem text="Edit" id="cmi3"/>
+                <af:commandMenuItem text="Show Details" id="cmi4"/>
+              </af:menu>
+            </af:popup>
+          </f:facet><f:facet name="detailStamp">
+            <af:listView value="#{bindings.EmployeesView3.collectionModel}" var="item"
+                         emptyText="#{bindings.EmployeesView3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                         fetchSize="#{bindings.EmployeesView3.rangeSize}" id="lv1">
+              <af:listItem id="li1">
+                <af:panelGroupLayout layout="horizontal" id="pgl1">
+                  <f:facet name="separator">
+                    <af:spacer width="10" id="s1"/>
+                  </f:facet>
+                  <af:outputFormatted value="#{item.bindings.EmployeeId.inputValue}" id="of1">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.EmployeesView3.hints.EmployeeId.format}"/>
+                  </af:outputFormatted>
+                  <af:outputFormatted value="#{item.bindings.FirstName.inputValue}" id="of2"/>
+                  <af:outputFormatted value="#{item.bindings.LastName.inputValue}" id="of3"/>
+                  <af:outputFormatted value="#{item.bindings.Salary.inputValue}" id="of4">
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeesView3.hints.Salary.format}"/>
+                  </af:outputFormatted>
+                </af:panelGroupLayout>
+              </af:listItem>
+            </af:listView>
+          </f:facet>
+        </af:table>
+      </af:panelCollection>
+    </af:form>
+  </af:document>
+</f:view>
