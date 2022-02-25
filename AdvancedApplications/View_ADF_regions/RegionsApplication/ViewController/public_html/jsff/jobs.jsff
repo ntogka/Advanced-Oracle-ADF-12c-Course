@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelBox text="Jobs" id="pb1">
+    <f:facet name="toolbar"/>
+    <af:table value="#{bindings.JobsView1.collectionModel}" var="row" rows="#{bindings.JobsView1.rangeSize}"
+              emptyText="#{bindings.JobsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+              rowBandingInterval="0" selectedRowKeys="#{bindings.JobsView1.collectionModel.selectedRow}"
+              selectionListener="#{bindings.JobsView1.collectionModel.makeCurrent}" rowSelection="single"
+              fetchSize="#{bindings.JobsView1.rangeSize}" filterModel="#{bindings.JobsView1Query.queryDescriptor}"
+              filterVisible="true" queryListener="#{bindings.JobsView1Query.processQuery}" varStatus="vs" id="t1">
+      <af:column sortProperty="#{bindings.JobsView1.hints.JobId.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.JobsView1.hints.JobId.label}" id="c1">
+        <af:outputText value="#{row.JobId}" shortDesc="#{bindings.JobsView1.hints.JobId.tooltip}" id="ot1"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.JobsView1.hints.JobTitle.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.JobsView1.hints.JobTitle.label}" id="c2">
+        <af:outputText value="#{row.JobTitle}" shortDesc="#{bindings.JobsView1.hints.JobTitle.tooltip}" id="ot2"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.JobsView1.hints.MinSalary.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.JobsView1.hints.MinSalary.label}" id="c3">
+        <af:outputText value="#{row.MinSalary}" shortDesc="#{bindings.JobsView1.hints.MinSalary.tooltip}" id="ot3">
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.JobsView1.hints.MinSalary.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.JobsView1.hints.MaxSalary.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.JobsView1.hints.MaxSalary.label}" id="c4">
+        <af:outputText value="#{row.MaxSalary}" shortDesc="#{bindings.JobsView1.hints.MaxSalary.tooltip}" id="ot4">
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.JobsView1.hints.MaxSalary.format}"/>
+        </af:outputText>
+      </af:column>
+    </af:table>
+  </af:panelBox>
+</ui:composition>

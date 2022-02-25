@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelBox text="Departments" id="pb1">
+    <f:facet name="toolbar"/>
+    <af:table value="#{bindings.DepartmentsView1.collectionModel}" var="row"
+              rows="#{bindings.DepartmentsView1.rangeSize}"
+              emptyText="#{bindings.DepartmentsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+              rowBandingInterval="0" selectedRowKeys="#{bindings.DepartmentsView1.collectionModel.selectedRow}"
+              selectionListener="#{bindings.DepartmentsView1.collectionModel.makeCurrent}" rowSelection="single"
+              fetchSize="#{bindings.DepartmentsView1.rangeSize}"
+              filterModel="#{bindings.DepartmentsView1Query.queryDescriptor}" filterVisible="true"
+              queryListener="#{bindings.DepartmentsView1Query.processQuery}" varStatus="vs" id="t1">
+      <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentId.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.DepartmentsView1.hints.DepartmentId.label}" id="c1">
+        <af:outputText value="#{row.DepartmentId}" shortDesc="#{bindings.DepartmentsView1.hints.DepartmentId.tooltip}"
+                       id="ot1">
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.DepartmentId.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentName.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.DepartmentsView1.hints.DepartmentName.label}" id="c2">
+        <af:outputText value="#{row.DepartmentName}"
+                       shortDesc="#{bindings.DepartmentsView1.hints.DepartmentName.tooltip}" id="ot2"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.DepartmentsView1.hints.ManagerId.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.DepartmentsView1.hints.ManagerId.label}" id="c3">
+        <af:outputText value="#{row.ManagerId}" shortDesc="#{bindings.DepartmentsView1.hints.ManagerId.tooltip}"
+                       id="ot3">
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.ManagerId.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.DepartmentsView1.hints.LocationId.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.DepartmentsView1.hints.LocationId.label}" id="c4">
+        <af:outputText value="#{row.LocationId}" shortDesc="#{bindings.DepartmentsView1.hints.LocationId.tooltip}"
+                       id="ot4">
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.LocationId.format}"/>
+        </af:outputText>
+      </af:column>
+    </af:table>
+  </af:panelBox>
+</ui:composition>

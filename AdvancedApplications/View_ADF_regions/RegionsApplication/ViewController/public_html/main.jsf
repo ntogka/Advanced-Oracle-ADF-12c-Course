@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="main.jsf" id="d1">
+    <af:form id="f1">
+      <af:panelSplitter id="ps1" partialTriggers="l5">
+        <f:facet name="first">
+          <af:panelBox text="System Information" id="pb1" showDisclosure="false">
+            <f:facet name="toolbar"/>
+           <af:link id="l5" icon="/images/grid.png" shortDesc="Gride View" partialSubmit="true">
+              <af:clientListener method="backToGrid" type="action"/>
+            </af:link>
+          </af:panelBox>
+        </f:facet>
+        <f:facet name="second">
+          <af:panelSpringboard id="ps2" displayMode="grid">
+            <af:showDetailItem text="Departments" id="sdi1" icon="/images/1.png">
+              <af:region value="#{bindings.deptstaskflowdefinition1.regionModel}" id="r1"/>
+            </af:showDetailItem>
+            <af:showDetailItem text="Employees" id="sdi2" icon="/images/2.png">
+              <af:region value="#{bindings.empstaskflowdefinition1.regionModel}" id="r2"/>
+            </af:showDetailItem>
+            <af:showDetailItem text="Jobs" id="sdi3" icon="/images/3.png">
+              <af:region value="#{bindings.jobstaskflowdefinition1.regionModel}" id="r3"/>
+            </af:showDetailItem>
+            <af:showDetailItem text="Depts/Emps" id="sdi4" icon="/images/4.png">
+              <af:region value="#{bindings.depemptaskflowdefinition1.regionModel}" id="r4"/>
+            </af:showDetailItem>
+          </af:panelSpringboard>
+        </f:facet>
+      </af:panelSplitter>
+    </af:form>
+    <f:facet name="metaContainer">
+      <af:resource type="javascript">
+      function backToGrid(actionEvent)
+{
+actionEvent.cancel();
+var eventSource = actionEvent.getSource();
+var object_navigator = eventSource.findComponent("ps2");
+object_navigator.setProperty(AdfRichPanelSpringboard.DISPLAY_MODE, "grid", true);
+}
+      </af:resource>
+    </f:facet>
+  </af:document>
+</f:view>
