@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AppModule"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="model.eo.AppModuleImpl">
+  <DesignTime>
+    <Attr Name="_deployType" Value="4096"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewUsage
+    Name="DepartmentsView1"
+    ViewObjectName="model.vo.DepartmentsView"/>
+  <Remote
+    Name="ServiceInterface"
+    ServerClassName="model.eo.server.serviceinterface.AppModuleServiceImpl"
+    ServerInterfaceName="model.eo.common.serviceinterface.AppModuleService">
+    <DesignTime>
+      <Attr Name="_webServiceName" Value="AppModuleService"/>
+      <Attr Name="_targetNameSpace" Value="/model/eo/common/"/>
+    </DesignTime>
+  </Remote>
+  <ServiceViewUsage
+    ViewUsageName="DepartmentsView1"
+    CanCreate="true"
+    CanDelete="true">
+    <DesignTime>
+      <Attr Name="_GetOpName" Value="getDepartmentsView1"/>
+      <Attr Name="_DeleteOpName" Value="deleteDepartmentsView1"/>
+      <Attr Name="_FindOpName" Value="findDepartmentsView1"/>
+      <Attr Name="_CreateOpName" Value="createDepartmentsView1"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceInterface
+    Name="__serviceInterface">
+    <Method
+      Name="getCustomDeptName"
+      MethodName="getCustomDeptName">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="deptId"
+        Type="int"/>
+    </Method>
+  </ServiceInterface>
+</AppModule>

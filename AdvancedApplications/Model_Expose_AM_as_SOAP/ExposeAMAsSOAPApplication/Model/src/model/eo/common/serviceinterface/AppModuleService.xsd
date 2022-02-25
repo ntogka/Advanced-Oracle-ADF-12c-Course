@@ -1,0 +1,74 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="/model/eo/common/types/"
+     xmlns:tns="/model/eo/common/types/" xmlns:ns0="/model/vo/common/" xmlns:ns1="http://xmlns.oracle.com/adf/svc/types/">
+    <import namespace="http://xmlns.oracle.com/adf/svc/types/" schemaLocation="classpath:/META-INF/wsdl/BC4JService.xsd"/>
+    <import namespace="/model/vo/common/" schemaLocation="../../../vo/common/DepartmentsViewSDO.xsd"/>
+    <element name="getDepartmentsView1">
+        <complexType>
+            <sequence>
+                <element name="departmentId" type="int"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getDepartmentsView1Response">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:DepartmentsViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createDepartmentsView1">
+        <complexType>
+            <sequence>
+                <element name="departmentsView1" type="ns0:DepartmentsViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createDepartmentsView1Response">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:DepartmentsViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="deleteDepartmentsView1">
+        <complexType>
+            <sequence>
+                <element name="departmentsView1" type="ns0:DepartmentsViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="deleteDepartmentsView1Response">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="findDepartmentsView1">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findDepartmentsView1Response">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:DepartmentsViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getCustomDeptName">
+        <complexType>
+            <sequence>
+                <element name="deptId" type="int"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getCustomDeptNameResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>
