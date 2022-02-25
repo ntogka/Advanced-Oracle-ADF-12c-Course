@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AppModule"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="DepartmentsView1"
+    ViewObjectName="mysharedmodel.vo.DepartmentsView"/>
+  <ViewUsage
+    Name="EmployeesView1"
+    ViewObjectName="mysharedmodel.vo.EmployeesView"/>
+  <ViewUsage
+    Name="EmployeesView2"
+    ViewObjectName="mysharedmodel.vo.EmployeesView"/>
+  <ViewUsage
+    Name="DepartmentsView2"
+    ViewObjectName="mysharedmodel.vo.DepartmentsView"/>
+  <ViewUsage
+    Name="EmployeesView3"
+    ViewObjectName="mysharedmodel.vo.EmployeesView"/>
+  <ViewLinkUsage
+    Name="EmpManagerFkLink1"
+    ViewLinkObjectName="mysharedmodel.vo.EmpManagerFkLink"
+    SrcViewUsageName="mysharedmodel.eo.AppModule.EmployeesView1"
+    DstViewUsageName="mysharedmodel.eo.AppModule.EmployeesView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="DeptMgrFkLink1"
+    ViewLinkObjectName="mysharedmodel.vo.DeptMgrFkLink"
+    SrcViewUsageName="mysharedmodel.eo.AppModule.EmployeesView1"
+    DstViewUsageName="mysharedmodel.eo.AppModule.DepartmentsView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="EmpDeptFkLink1"
+    ViewLinkObjectName="mysharedmodel.vo.EmpDeptFkLink"
+    SrcViewUsageName="mysharedmodel.eo.AppModule.DepartmentsView1"
+    DstViewUsageName="mysharedmodel.eo.AppModule.EmployeesView3"
+    Reversed="false"/>
+  <Properties>
+    <SchemaBasedProperties>
+      <DATA_CONTROL_NAME
+        Value="MySharedHRAppModuleDataControl"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="mysharedmodel.MySharedModelBundle"/>
+  </ResourceBundle>
+</AppModule>

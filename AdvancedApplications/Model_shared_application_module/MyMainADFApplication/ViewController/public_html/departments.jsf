@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="departments.jsf" id="d1">
+    <af:messages id="m1"/>
+    <af:form id="f1">
+      <af:panelTabbed position="above" id="pt1">
+        <af:showDetailItem id="tab1" text="HR Shared">
+          <af:table value="#{bindings.DepartmentsView1.collectionModel}" var="row"
+                    rows="#{bindings.DepartmentsView1.rangeSize}"
+                    emptyText="#{bindings.DepartmentsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0" selectedRowKeys="#{bindings.DepartmentsView1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.DepartmentsView1.collectionModel.makeCurrent}" rowSelection="single"
+                    fetchSize="#{bindings.DepartmentsView1.rangeSize}"
+                    filterModel="#{bindings.DepartmentsView1Query.queryDescriptor}" filterVisible="true"
+                    queryListener="#{bindings.DepartmentsView1Query.processQuery}" varStatus="vs" id="t1">
+            <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentId.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsView1.hints.DepartmentId.label}" id="c1">
+              <af:outputText value="#{row.DepartmentId}"
+                             shortDesc="#{bindings.DepartmentsView1.hints.DepartmentId.tooltip}" id="ot1">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.DepartmentsView1.hints.DepartmentId.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentName.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsView1.hints.DepartmentName.label}" id="c2">
+              <af:outputText value="#{row.DepartmentName}"
+                             shortDesc="#{bindings.DepartmentsView1.hints.DepartmentName.tooltip}" id="ot2"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.DepartmentsView1.hints.ManagerId.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsView1.hints.ManagerId.label}" id="c3">
+              <af:outputText value="#{row.ManagerId}" shortDesc="#{bindings.DepartmentsView1.hints.ManagerId.tooltip}"
+                             id="ot3">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.ManagerId.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.DepartmentsView1.hints.LocationId.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsView1.hints.LocationId.label}" id="c4">
+              <af:outputText value="#{row.LocationId}" shortDesc="#{bindings.DepartmentsView1.hints.LocationId.tooltip}"
+                             id="ot4">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.LocationId.format}"/>
+              </af:outputText>
+            </af:column>
+          </af:table>
+        </af:showDetailItem>
+        <af:showDetailItem id="tab2" text="School Local">
+          <af:table value="#{bindings.StudentsView1.collectionModel}" var="row"
+                    rows="#{bindings.StudentsView1.rangeSize}"
+                    emptyText="#{bindings.StudentsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0" selectedRowKeys="#{bindings.StudentsView1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.StudentsView1.collectionModel.makeCurrent}" rowSelection="single"
+                    fetchSize="#{bindings.StudentsView1.rangeSize}"
+                    filterModel="#{bindings.StudentsView1Query.queryDescriptor}" filterVisible="true"
+                    queryListener="#{bindings.StudentsView1Query.processQuery}" varStatus="vs" id="t2">
+            <af:column sortProperty="#{bindings.StudentsView1.hints.StudentId.name}" filterable="true" sortable="true"
+                       headerText="#{bindings.StudentsView1.hints.StudentId.label}" id="c5">
+              <af:outputText value="#{row.StudentId}" shortDesc="#{bindings.StudentsView1.hints.StudentId.tooltip}"
+                             id="ot5">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.StudentsView1.hints.StudentId.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.StudentsView1.hints.StudentName.name}" filterable="true" sortable="true"
+                       headerText="#{bindings.StudentsView1.hints.StudentName.label}" id="c6">
+              <af:outputText value="#{row.StudentName}" shortDesc="#{bindings.StudentsView1.hints.StudentName.tooltip}"
+                             id="ot6"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.StudentsView1.hints.StudentGendar.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.StudentsView1.hints.StudentGendar.label}" id="c7">
+              <af:outputText value="#{row.StudentGendar}"
+                             shortDesc="#{bindings.StudentsView1.hints.StudentGendar.tooltip}" id="ot7"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.StudentsView1.hints.StudentAddress.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.StudentsView1.hints.StudentAddress.label}" id="c8">
+              <af:outputText value="#{row.StudentAddress}"
+                             shortDesc="#{bindings.StudentsView1.hints.StudentAddress.tooltip}" id="ot8"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.StudentsView1.hints.StudentDob.name}" filterable="true" sortable="true"
+                       headerText="#{bindings.StudentsView1.hints.StudentDob.label}" id="c9">
+              <f:facet name="filter">
+                <af:inputDate value="#{bindings.StudentsView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.StudentDob.value}"
+                              id="id1">
+                  <af:convertDateTime pattern="#{bindings.StudentsView1.hints.StudentDob.format}"/>
+                </af:inputDate>
+              </f:facet>
+              <af:outputText value="#{row.StudentDob}" shortDesc="#{bindings.StudentsView1.hints.StudentDob.tooltip}"
+                             id="ot9">
+                <af:convertDateTime pattern="#{bindings.StudentsView1.hints.StudentDob.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.StudentsView1.hints.StudentParentName.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.StudentsView1.hints.StudentParentName.label}" id="c10">
+              <af:outputText value="#{row.StudentParentName}"
+                             shortDesc="#{bindings.StudentsView1.hints.StudentParentName.tooltip}" id="ot10"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.StudentsView1.hints.StudentParentEmail.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.StudentsView1.hints.StudentParentEmail.label}" id="c11">
+              <af:outputText value="#{row.StudentParentEmail}"
+                             shortDesc="#{bindings.StudentsView1.hints.StudentParentEmail.tooltip}" id="ot11"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.StudentsView1.hints.StudentParentPhone.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.StudentsView1.hints.StudentParentPhone.label}" id="c12">
+              <af:outputText value="#{row.StudentParentPhone}"
+                             shortDesc="#{bindings.StudentsView1.hints.StudentParentPhone.tooltip}" id="ot12"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.StudentsView1.hints.StudentCreatedDate.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.StudentsView1.hints.StudentCreatedDate.label}" id="c13">
+              <f:facet name="filter">
+                <af:inputDate value="#{bindings.StudentsView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.StudentCreatedDate.value}"
+                              id="id2">
+                  <af:convertDateTime pattern="#{bindings.StudentsView1.hints.StudentCreatedDate.format}"/>
+                </af:inputDate>
+              </f:facet>
+              <af:outputText value="#{row.StudentCreatedDate}"
+                             shortDesc="#{bindings.StudentsView1.hints.StudentCreatedDate.tooltip}" id="ot13">
+                <af:convertDateTime pattern="#{bindings.StudentsView1.hints.StudentCreatedDate.format}"/>
+              </af:outputText>
+            </af:column>
+          </af:table>
+        </af:showDetailItem>
+      </af:panelTabbed>
+    </af:form>
+  </af:document>
+</f:view>
