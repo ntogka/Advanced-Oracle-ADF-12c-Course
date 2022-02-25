@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="dept.jsf" id="d1">
+    <af:messages id="m1"/>
+    <af:form id="f1">
+      <af:panelGroupLayout id="pgl1" layout="vertical" halign="center">
+        <af:spacer width="10" height="10" id="s2"/>
+        <af:outputText value="ADF Application Version 2" id="ot1"
+                       inlineStyle="font-size:large; font-weight:bold; color:#005200;"/>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:panelCollection id="pc1">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar"/>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.DepartmentsView1.collectionModel}" var="row"
+                    rows="#{bindings.DepartmentsView1.rangeSize}"
+                    emptyText="#{bindings.DepartmentsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0" selectedRowKeys="#{bindings.DepartmentsView1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.DepartmentsView1.collectionModel.makeCurrent}" rowSelection="single"
+                    fetchSize="#{bindings.DepartmentsView1.rangeSize}"
+                    filterModel="#{bindings.DepartmentsView1Query.queryDescriptor}" filterVisible="true"
+                    queryListener="#{bindings.DepartmentsView1Query.processQuery}" varStatus="vs" id="t1">
+            <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentId.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsView1.hints.DepartmentId.label}" id="c1">
+              <af:outputText value="#{row.DepartmentId}"
+                             shortDesc="#{bindings.DepartmentsView1.hints.DepartmentId.tooltip}" id="ot2">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.DepartmentsView1.hints.DepartmentId.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentName.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsView1.hints.DepartmentName.label}" id="c2">
+              <af:outputText value="#{row.DepartmentName}"
+                             shortDesc="#{bindings.DepartmentsView1.hints.DepartmentName.tooltip}" id="ot3"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.DepartmentsView1.hints.ManagerId.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsView1.hints.ManagerId.label}" id="c3">
+              <af:outputText value="#{row.ManagerId}" shortDesc="#{bindings.DepartmentsView1.hints.ManagerId.tooltip}"
+                             id="ot4">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.ManagerId.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.DepartmentsView1.hints.LocationId.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsView1.hints.LocationId.label}" id="c4">
+              <af:outputText value="#{row.LocationId}" shortDesc="#{bindings.DepartmentsView1.hints.LocationId.tooltip}"
+                             id="ot5">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.LocationId.format}"/>
+              </af:outputText>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:panelGroupLayout>
+    </af:form>
+  </af:document>
+</f:view>

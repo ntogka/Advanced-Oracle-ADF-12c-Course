@@ -1,0 +1,22 @@
+
+Side-by-Side Deployment:
+--------------------------
+
+1- Open cmd and run "setDomainEnv.cmd" as "<Middleware>\user_projects\domains\<your-domain>\bin\setDomainEnv.cmd" 
+
+2- To deploy application first time run this command:
+
+  java weblogic.Deployer -adminurl t3://127.0.0.1:7101 -user weblogic -password weblogic1 -deploy -name sideBySideApp -source C:\JDeveloper\mywork\SideBySideDeploymentADFApplication\deploy\ssd.ear -targets DefaultServer -stage -appversion 1.0
+
+3- To redeploy new version of the application run this:
+
+  java weblogic.Deployer -adminurl t3://127.0.0.1:7101 -user weblogic -password weblogic1 -redeploy -name sideBySideApp -source C:\JDeveloper\mywork\SideBySideDeploymentADFApplication\deploy\ssd.ear -targets DefaultServer -appversion 1.1
+  
+Note:
+
+1- Maximum number of versions you can deploy is only 2 versions. So, before you redeploy new version of the application you can remove old unused version before redeploying the new version.
+2- If you redeploy the application, be sure you enter the same application name which is exist in weblogic
+
+
+
+
