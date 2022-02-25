@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="login.jsf" id="d1">
+    <af:form id="f1">
+      <af:panelFormLayout id="pfl1">
+        <f:facet name="footer">
+          <af:button text="Login" id="b1" action="#{myBean.loginAction}"/>
+        </f:facet>
+        <af:inputText label="Username" id="it1" value="#{myBean.userName}"/>
+        <af:inputText label="Password" id="it2" secret="true" value="#{myBean.password}"/>
+        <af:selectBooleanCheckbox text="Remember Me" label="Label 1" id="sbc1" binding="#{myBean.rememberMeCheckBox}"
+                                  simple="true"/>
+      </af:panelFormLayout>
+    </af:form>
+  </af:document>
+</f:view>
