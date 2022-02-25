@@ -1,0 +1,19 @@
+//Groovy Scripts for model.vo.DepartmentsView
+
+package model.vo
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="CountriesView1", name="regionParam")
+def regionParam_CountriesView1_BindVariable_BoundParameter()
+{
+RegionId
+}
+
+
+@AccessorParameterExpression(accessorName="LocationsView1", name="countryParam")
+def countryParam_LocationsView1_BindVariable_BoundParameter()
+{
+CountryId
+}
+
