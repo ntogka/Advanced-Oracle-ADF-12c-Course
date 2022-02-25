@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component" xmlns:f="http://java.sun.com/jsf/core">
+  <af:xmlContent>
+    <afc:component>
+      <afc:description/>
+      <afc:display-name>templateDef1</afc:display-name>
+      <afc:facet>
+        <afc:facet-name>main</afc:facet-name>
+      </afc:facet>
+    </afc:component>
+  </af:xmlContent>
+  <af:panelSplitter orientation="vertical" splitterPosition="50" id="pt_ps1">
+    <f:facet name="first">
+      <af:panelGroupLayout id="pt_pgl1" layout="horizontal" halign="right">
+        <af:selectOneChoice label="Skins" id="pt_soc1" valueChangeListener="#{myBean.skinValueChangeListener}"
+                            autoSubmit="true" value="#{sessionScope.skin}">
+          <af:selectItem label="Skin 1" value="mySkin1" id="pt_si1"/>
+          <af:selectItem label="Skin 2" value="mySkin2" id="pt_si2"/>
+          <af:selectItem label="Skin 3" value="mySkin3" id="pt_si3"/>
+        </af:selectOneChoice>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="second">
+      <af:facetRef facetName="main"/>
+    </f:facet>
+  </af:panelSplitter>
+</af:pageTemplateDef>
