@@ -1,0 +1,38 @@
+//Groovy Scripts for model.vo.EmployeesView
+
+package model.vo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="MyDepartmentName")
+def MyDepartmentName_ExpressionScript_Expression()
+{
+DepartmentsView1.DepartmentName
+}
+
+
+@TransientValueExpression(attributeName="HireDate")
+def HireDate_ExpressionScript_Expression()
+{
+adf.currentDate
+}
+
+
+@TransientValueExpression(attributeName="EmpFullName")
+def EmpFullName_ExpressionScript_Expression()
+{
+FirstName + " " + LastName
+}
+
+
+@TransientValueExpression(attributeName="TotalEmpIncome")
+def TotalEmpIncome_ExpressionScript_Expression()
+{
+if(Salary != null && CommissionPct != null){
+(Salary * CommissionPct) + Salary
+}
+else{
+Salary
+}
+}
+

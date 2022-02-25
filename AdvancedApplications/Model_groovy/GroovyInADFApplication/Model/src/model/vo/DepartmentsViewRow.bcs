@@ -1,0 +1,22 @@
+//Groovy Scripts for model.vo.DepartmentsView
+
+package model.vo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+
+
+
+@TransientValueExpression(attributeName="TotalEmployeesSalary")
+def TotalEmployeesSalary_ExpressionScript_Expression()
+{
+EmployeesView.sum("Salary")
+}
+
+
+@TransientValueExpression(attributeName="TotalNumberOfEmployees")
+def TotalNumberOfEmployees_ExpressionScript_Expression()
+{
+EmployeesView.count("EmployeeId")
+}
+
