@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:componentDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" componentVar="comp" definition="private"
+                 xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component" xmlns:f="http://java.sun.com/jsf/core">
+  <af:xmlContent>
+    <afc:component>
+      <afc:description/>
+      <afc:display-name>MyCustomeDeleteButton</afc:display-name>
+      <afc:attribute>
+        <afc:attribute-name>ButtonText</afc:attribute-name>
+        <afc:attribute-class>java.lang.String</afc:attribute-class>
+        <afc:default-value>Delete</afc:default-value>
+      </afc:attribute>
+      <afc:attribute>
+        <afc:attribute-name>OperationId</afc:attribute-name>
+        <afc:attribute-class>java.lang.String</afc:attribute-class>
+        <afc:default-value>Delete</afc:default-value>
+      </afc:attribute>
+      <afc:attribute>
+        <afc:attribute-name>ButtonIcon</afc:attribute-name>
+        <afc:attribute-class>java.lang.String</afc:attribute-class>
+      </afc:attribute>
+      <afc:attribute>
+        <afc:attribute-name>PopupTitle</afc:attribute-name>
+        <afc:attribute-class>java.lang.String</afc:attribute-class>
+        <afc:default-value>Delete Confirmation</afc:default-value>
+      </afc:attribute>
+      <afc:attribute>
+        <afc:attribute-name>DeleteMessage</afc:attribute-name>
+        <afc:attribute-class>java.lang.String</afc:attribute-class>
+        <afc:default-value>Are you sure you want to delete the recored?</afc:default-value>
+      </afc:attribute>
+      <afc:component-extension>
+        <afc:component-tag-namespace>component</afc:component-tag-namespace>
+        <afc:component-taglib-uri>/myDeleteButton</afc:component-taglib-uri>
+      </afc:component-extension>
+    </afc:component>
+  </af:xmlContent>
+  <af:panelGroupLayout id="dc_pgl1">
+    <af:button text="#{attrs.ButtonText}" id="dc_b1" icon="#{attrs.ButtonIcon}">
+      <af:showPopupBehavior popupId="dc_p1" triggerType="action"/>
+    </af:button>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="dc_p1">
+      <af:dialog id="dc_d1" title="#{attrs.PopupTitle}" affirmativeTextAndAccessKey="Yes"
+                 dialogListener="#{myDecBean.deleteDialogListener}">
+        <f:facet name="buttonBar"/>
+        <af:outputText value="#{attrs.DeleteMessage}" id="dc_ot1"/>
+      </af:dialog>
+    </af:popup>
+  </af:panelGroupLayout>
+</af:componentDef>
