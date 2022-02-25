@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AppModule"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="EmployeesView1"
+    ViewObjectName="model.vo.EmployeesView"/>
+  <ViewUsage
+    Name="EmployeesForDept10View1"
+    ViewObjectName="model.vo.EmployeesView">
+    <ViewCriteriaUsage
+      Name="EmployeesForDept10ViewCriteria"
+      FullName="model.vo.EmployeesView.EmployeesForDept10ViewCriteria"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="EmployeesSalaryGT20000View1"
+    ViewObjectName="model.vo.EmployeesView">
+    <ViewCriteriaUsage
+      Name="EmployeesSalaryGT20000ViewCriteria"
+      FullName="model.vo.EmployeesView.EmployeesSalaryGT20000ViewCriteria"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="EmployeesSalaryLT20000View1"
+    ViewObjectName="model.vo.EmployeesView">
+    <ViewCriteriaUsage
+      Name="EmployeesSalaryLT20000ViewCriteria"
+      FullName="model.vo.EmployeesView.EmployeesSalaryLT20000ViewCriteria"/>
+  </ViewUsage>
+</AppModule>
