@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="callSoap.jsf" id="d1">
+    <af:form id="f1">
+      <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:inputText label="Dept Id" id="it1" binding="#{myBEan.deptIdInputText}"/>
+        <af:button text="Invoke WS" id="b1" actionListener="#{myBEan.invokeWSActionListener}"/>
+        <af:outputText id="ot1" binding="#{myBEan.soapWSResultOutputText}" partialTriggers="b1"/>
+      </af:panelGroupLayout>
+    </af:form>
+  </af:document>
+</f:view>
