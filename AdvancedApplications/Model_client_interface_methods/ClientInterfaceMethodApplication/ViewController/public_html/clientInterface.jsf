@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="clientInterface.jsf" id="d1">
+    <af:messages id="m1"/>
+    <af:form id="f1">
+      <af:panelTabbed position="above" id="pt1">
+        <af:showDetailItem id="tab1" text="AppModule Method">
+          <af:panelFormLayout id="pfl1">
+            <af:inputText value="#{bindings.deptId.inputValue}" label="#{bindings.deptId.hints.label}"
+                          required="#{bindings.deptId.hints.mandatory}" columns="#{bindings.deptId.hints.displayWidth}"
+                          maximumLength="#{bindings.deptId.hints.precision}"
+                          shortDesc="#{bindings.deptId.hints.tooltip}" id="it1">
+              <f:validator binding="#{bindings.deptId.validator}"/>
+            </af:inputText>
+            <af:outputText value="#{bindings.return.inputValue}" shortDesc="#{bindings.return.hints.tooltip}" id="ot1"
+                           inlineStyle="color:Maroon; font-size:large; font-weight:bold;" partialTriggers="b1"/>
+            <f:facet name="footer">
+              <af:button actionListener="#{bindings.getDepartmentName.execute}" text="getDepartmentName"
+                         disabled="#{!bindings.getDepartmentName.enabled}" id="b1"/>
+            </f:facet>
+          </af:panelFormLayout>
+        </af:showDetailItem>
+        <af:showDetailItem id="tab2" text="VO Level Method">
+          <af:panelFormLayout id="pfl2">
+            <af:inputText value="#{bindings.employeeId.inputValue}" label="#{bindings.employeeId.hints.label}"
+                          required="#{bindings.employeeId.hints.mandatory}"
+                          columns="#{bindings.employeeId.hints.displayWidth}"
+                          maximumLength="#{bindings.employeeId.hints.precision}"
+                          shortDesc="#{bindings.employeeId.hints.tooltip}" id="it2">
+              <f:validator binding="#{bindings.employeeId.validator}"/>
+            </af:inputText>
+            <af:outputText value="#{bindings.return1.inputValue}" shortDesc="#{bindings.return1.hints.tooltip}"
+                           id="ot2" inlineStyle="color:Maroon; font-size:large; font-weight:bold;"
+                           partialTriggers="b2"/>
+            <f:facet name="footer">
+              <af:button actionListener="#{bindings.getEmployeeFullName.execute}" text="getEmployeeFullName"
+                         disabled="#{!bindings.getEmployeeFullName.enabled}" id="b2"/>
+            </f:facet>
+          </af:panelFormLayout>
+        </af:showDetailItem>
+      </af:panelTabbed>
+    </af:form>
+  </af:document>
+</f:view>

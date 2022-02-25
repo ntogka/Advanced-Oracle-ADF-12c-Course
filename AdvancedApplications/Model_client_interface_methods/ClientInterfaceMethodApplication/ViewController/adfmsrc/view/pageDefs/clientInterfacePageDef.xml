@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="clientInterfacePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="getDepartmentName_return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.getDepartmentName.result}"/>
+      <variable Type="int" Name="getDepartmentName_deptId" IsQueriable="false"/>
+      <variable Type="java.lang.String" Name="getEmployeeFullName_return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.getEmployeeFullName.result}"/>
+      <variable Type="int" Name="getEmployeeFullName_employeeId" IsQueriable="false"/>
+    </variableIterator>
+  </executables>
+  <bindings>
+    <methodAction id="getDepartmentName" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getDepartmentName"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.getDepartmentName.dataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.getDepartmentName_getDepartmentName_dataControl_dataProvider_getDepartmentName_result">
+      <NamedData NDName="deptId" NDType="int" NDValue="${bindings.getDepartmentName_deptId}"/>
+    </methodAction>
+    <attributeValues IterBinding="variables" id="deptId">
+      <AttrNames>
+        <Item Value="getDepartmentName_deptId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="return">
+      <AttrNames>
+        <Item Value="getDepartmentName_return"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="getEmployeeFullName" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getEmployeeFullName" IsViewObjectMethod="true" DataControl="AppModuleDataControl"
+                  InstanceName="data.AppModuleDataControl.EmployeesView1"
+                  ReturnName="data.AppModuleDataControl.methodResults.getEmployeeFullName_getEmployeeFullName_dataControl_EmployeesView1_getEmployeeFullName_result">
+      <NamedData NDName="employeeId" NDType="int" NDValue="${bindings.getEmployeeFullName_employeeId}"/>
+    </methodAction>
+    <attributeValues IterBinding="variables" id="employeeId">
+      <AttrNames>
+        <Item Value="getEmployeeFullName_employeeId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="return1">
+      <AttrNames>
+        <Item Value="getEmployeeFullName_return"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>
