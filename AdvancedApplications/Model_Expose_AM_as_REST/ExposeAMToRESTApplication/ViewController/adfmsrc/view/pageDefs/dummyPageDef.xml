@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="dummyPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="getDeptNameCustomMethod_return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.getDeptNameCustomMethod.result}"/>
+      <variable Type="java.lang.String" Name="getDeptNameCustomMethod_deptId" IsQueriable="false"/>
+    </variableIterator>
+  </executables>
+  <bindings>
+    <methodAction id="getDeptNameCustomMethod" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getDeptNameCustomMethod" IsViewObjectMethod="true" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.getDeptNameCustomMethod.dataControl.DepartmentsView1"
+                  ReturnName="data.AppModuleDataControl.methodResults.getDeptNameCustomMethod_getDeptNameCustomMethod_dataControl_DepartmentsView1_getDeptNameCustomMethod_result">
+      <NamedData NDName="deptId" NDType="java.lang.String" NDValue="${bindings.getDeptNameCustomMethod_deptId}"/>
+    </methodAction>
+    <attributeValues IterBinding="variables" id="deptId">
+      <AttrNames>
+        <Item Value="getDeptNameCustomMethod_deptId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

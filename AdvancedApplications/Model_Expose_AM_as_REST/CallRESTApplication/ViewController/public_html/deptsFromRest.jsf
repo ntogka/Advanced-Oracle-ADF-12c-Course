@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="deptsFromRest.jsf" id="d1">
+    <af:form id="f1">
+      <af:table var="row" rowBandingInterval="0" id="t1" value="#{myBean.tableDepartments}">
+        <af:column sortable="false" headerText="Department Id" id="c1">
+          <af:outputText value="#{row.departmentId}" id="ot1"/>
+        </af:column>
+        <af:column sortable="false" headerText="Department Name" id="c2">
+          <af:outputText value="#{row.departmentName}" id="ot2"/>
+        </af:column>
+        <af:column sortable="false" headerText="Location Id" id="c3">
+          <af:outputText value="#{row.locationId}" id="ot3"/>
+        </af:column>
+      </af:table>
+    </af:form>
+  </af:document>
+</f:view>

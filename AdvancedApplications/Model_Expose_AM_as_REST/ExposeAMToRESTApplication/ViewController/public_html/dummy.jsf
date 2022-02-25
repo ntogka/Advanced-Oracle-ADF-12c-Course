@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="dummy.jsf" id="d1">
+    <af:messages id="m1"/>
+    <af:form id="f1">
+      <af:panelFormLayout id="pfl1">
+        <af:inputText value="#{bindings.deptId.inputValue}" label="#{bindings.deptId.hints.label}"
+                      required="#{bindings.deptId.hints.mandatory}" columns="#{bindings.deptId.hints.displayWidth}"
+                      maximumLength="#{bindings.deptId.hints.precision}" shortDesc="#{bindings.deptId.hints.tooltip}"
+                      id="it1">
+          <f:validator binding="#{bindings.deptId.validator}"/>
+        </af:inputText>
+        <af:button actionListener="#{bindings.getDeptNameCustomMethod.execute}" text="getDeptNameCustomMethod"
+                   disabled="#{!bindings.getDeptNameCustomMethod.enabled}" id="b1"/>
+      </af:panelFormLayout>
+    </af:form>
+  </af:document>
+</f:view>

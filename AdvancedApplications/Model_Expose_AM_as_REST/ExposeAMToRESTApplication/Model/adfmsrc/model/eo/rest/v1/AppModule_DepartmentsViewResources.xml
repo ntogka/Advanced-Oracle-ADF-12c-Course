@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="AppModule_DepartmentsViewResources" Package="model.eo.rest.v1" usageMode="RESTClient">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DepartmentsView1" RangeSize="5" DataControl="AppModuleDataControl" id="DepartmentsView1Iter"/>
+  </executables>
+  <bindings>
+   <methodAction id="getDeptNameCustomMethod" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getDeptNameCustomMethod" IsViewObjectMethod="true" DataControl="AppModuleDataControl"
+                  InstanceName="data.AppModuleDataControl.DepartmentsView1"
+                  ReturnName="data.AppModuleDataControl.methodResults.getDeptNameCustomMethod_getDeptNameCustomMethod_dataControl_DepartmentsView1_getDeptNameCustomMethod_result"
+                  IterBinding="DepartmentsView1Iter">
+      <NamedData NDName="deptId" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="DepartmentsView1Iter" id="depts" AccessorFolder="Always">
+      <nodeDefinition DefName="model.vo.DepartmentsView" Name="model.vo.DepartmentsView"/>
+    </tree>
+  </bindings>
+</pageDefinition>
