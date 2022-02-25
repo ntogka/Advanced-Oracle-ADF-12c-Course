@@ -1,0 +1,28 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle-webservice-clients xmlns:ns0="http://java.sun.com/xml/ns/javaee">
+   <webservice-client>
+      <service-qname namespaceURI="/model/eo/common/" localpart="AppModuleService"/>
+      <port-info>
+         <wsdl-port namespaceURI="/model/eo/common/" localpart="AppModuleServiceSoapHttpPort"/>
+         <stub-property>
+            <name>
+               csf-key
+            </name>
+            <value>
+               myKey
+            </value>
+         </stub-property>
+         <runtime/>
+         <policy-references>
+            <policy-reference category="security" uri="oracle/wss_username_token_client_policy"/>
+         </policy-references>
+         <operations>
+            <operation name="getDepartmentsView1"/>
+            <operation name="createDepartmentsView1"/>
+            <operation name="deleteDepartmentsView1"/>
+            <operation name="findDepartmentsView1"/>
+            <operation name="getCustomDeptName"/>
+         </operations>
+      </port-info>
+   </webservice-client>
+</oracle-webservice-clients>
