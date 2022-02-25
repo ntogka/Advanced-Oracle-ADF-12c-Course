@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <af:document title="map.jsf" id="d1">
+    <af:messages id="m1"/>
+    <af:form id="f1">
+      <af:panelSplitter id="ps1" splitterPosition="600">
+        <f:facet name="first">
+          <af:table value="#{bindings.DepartmentsAndLocationView1.collectionModel}" var="row"
+                    rows="#{bindings.DepartmentsAndLocationView1.rangeSize}"
+                    emptyText="#{bindings.DepartmentsAndLocationView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0"
+                    selectedRowKeys="#{bindings.DepartmentsAndLocationView1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.DepartmentsAndLocationView1.collectionModel.makeCurrent}"
+                    rowSelection="single" fetchSize="#{bindings.DepartmentsAndLocationView1.rangeSize}"
+                    filterModel="#{bindings.DepartmentsAndLocationView1Query.queryDescriptor}" filterVisible="true"
+                    queryListener="#{bindings.DepartmentsAndLocationView1Query.processQuery}" varStatus="vs" id="t1">
+            <af:column sortProperty="#{bindings.DepartmentsAndLocationView1.hints.DepartmentName.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.DepartmentsAndLocationView1.hints.DepartmentName.label}" id="c1">
+              <af:outputText value="#{row.DepartmentName}"
+                             shortDesc="#{bindings.DepartmentsAndLocationView1.hints.DepartmentName.tooltip}" id="ot1"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.DepartmentsAndLocationView1.hints.DepartmentId.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsAndLocationView1.hints.DepartmentId.label}"
+                       id="c2">
+              <af:outputText value="#{row.DepartmentId}"
+                             shortDesc="#{bindings.DepartmentsAndLocationView1.hints.DepartmentId.tooltip}" id="ot2">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.DepartmentsAndLocationView1.hints.DepartmentId.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.DepartmentsAndLocationView1.hints.LocationId.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsAndLocationView1.hints.LocationId.label}"
+                       id="c3">
+              <af:outputText value="#{row.LocationId}"
+                             shortDesc="#{bindings.DepartmentsAndLocationView1.hints.LocationId.tooltip}" id="ot3">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.DepartmentsAndLocationView1.hints.LocationId.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.DepartmentsAndLocationView1.hints.City.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsAndLocationView1.hints.City.label}" id="c4">
+              <af:outputText value="#{row.City}" shortDesc="#{bindings.DepartmentsAndLocationView1.hints.City.tooltip}"
+                             id="ot4"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.DepartmentsAndLocationView1.hints.StreetAddress.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsAndLocationView1.hints.StreetAddress.label}"
+                       id="c5">
+              <af:outputText value="#{row.StreetAddress}"
+                             shortDesc="#{bindings.DepartmentsAndLocationView1.hints.StreetAddress.tooltip}" id="ot5"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.DepartmentsAndLocationView1.hints.PostalCode.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsAndLocationView1.hints.PostalCode.label}"
+                       id="c6">
+              <af:outputText value="#{row.PostalCode}"
+                             shortDesc="#{bindings.DepartmentsAndLocationView1.hints.PostalCode.tooltip}" id="ot6"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.DepartmentsAndLocationView1.hints.LocationX.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsAndLocationView1.hints.LocationX.label}"
+                       id="c7">
+              <af:outputText value="#{row.LocationX}"
+                             shortDesc="#{bindings.DepartmentsAndLocationView1.hints.LocationX.tooltip}" id="ot7">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.DepartmentsAndLocationView1.hints.LocationX.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.DepartmentsAndLocationView1.hints.LocationY.name}" filterable="true"
+                       sortable="true" headerText="#{bindings.DepartmentsAndLocationView1.hints.LocationY.label}"
+                       id="c8">
+              <af:outputText value="#{row.LocationY}"
+                             shortDesc="#{bindings.DepartmentsAndLocationView1.hints.LocationY.tooltip}" id="ot8">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.DepartmentsAndLocationView1.hints.LocationY.format}"/>
+              </af:outputText>
+            </af:column>
+          </af:table>
+        </f:facet>
+        <f:facet name="second">
+          <af:panelGroupLayout id="pgl1" partialTriggers="t1">
+            <dvt:map id="map" startingX="6.04475" mapServerConfigId="mapConfig1" baseMapName="ELOCATION.WORLD_MAP"
+                     mapZoom="4" inlineStyle="width:700px; height:475px;" startingY="49.750949"
+                     copyrightText="your copy right">
+              <dvt:mapPointTheme id="mt1" value="#{bindings.DepartmentsAndLocationView11.geoMapModel}"
+                                 builtInImage="Flag_Red"/>
+              <dvt:mapOverview initialShown="false"/>
+            </dvt:map>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:panelSplitter>
+    </af:form>
+  </af:document>
+</f:view>

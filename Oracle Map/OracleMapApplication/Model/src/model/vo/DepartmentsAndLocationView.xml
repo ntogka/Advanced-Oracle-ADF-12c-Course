@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DepartmentsAndLocationView"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  SelectList="Departments.DEPARTMENT_NAME, 
+       Departments.DEPARTMENT_ID, 
+       Locations.LOCATION_ID, 
+       Locations.CITY, 
+       Locations.STREET_ADDRESS, 
+       Locations.POSTAL_CODE, 
+       Locations.LOCATION_X, 
+       Locations.LOCATION_Y"
+  FromList="DEPARTMENTS Departments, LOCATIONS Locations"
+  Where="Departments.LOCATION_ID = Locations.LOCATION_ID">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.vo.DepartmentsAndLocationView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="Departments"
+    Entity="model.eo.Departments"/>
+  <EntityUsage
+    Name="Locations"
+    Entity="model.eo.Locations"
+    Association="model.eo.DeptLocFkAssoc"
+    AssociationEnd="model.eo.DeptLocFkAssoc.Locations"
+    SourceUsage="model.vo.DepartmentsAndLocationView.Departments"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="model.eo.Locations.LocationId"/>
+      </AttrArray>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="model.eo.Departments.LocationId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="DepartmentName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentName"
+    EntityUsage="Departments"
+    AliasName="DEPARTMENT_NAME"/>
+  <ViewAttribute
+    Name="DepartmentId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentId"
+    EntityUsage="Departments"
+    AliasName="DEPARTMENT_ID"/>
+  <ViewAttribute
+    Name="LocationId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LocationId"
+    EntityUsage="Locations"
+    AliasName="LOCATION_ID"/>
+  <ViewAttribute
+    Name="City"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="City"
+    EntityUsage="Locations"
+    AliasName="CITY"/>
+  <ViewAttribute
+    Name="StreetAddress"
+    PrecisionRule="true"
+    EntityAttrName="StreetAddress"
+    EntityUsage="Locations"
+    AliasName="STREET_ADDRESS"/>
+  <ViewAttribute
+    Name="PostalCode"
+    PrecisionRule="true"
+    EntityAttrName="PostalCode"
+    EntityUsage="Locations"
+    AliasName="POSTAL_CODE"/>
+  <ViewAttribute
+    Name="LocationX"
+    PrecisionRule="true"
+    EntityAttrName="LocationX"
+    EntityUsage="Locations"
+    AliasName="LOCATION_X"/>
+  <ViewAttribute
+    Name="LocationY"
+    PrecisionRule="true"
+    EntityAttrName="LocationY"
+    EntityUsage="Locations"
+    AliasName="LOCATION_Y"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="DepartmentId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

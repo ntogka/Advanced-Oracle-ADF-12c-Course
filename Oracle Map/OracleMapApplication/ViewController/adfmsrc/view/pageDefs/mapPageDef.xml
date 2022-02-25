@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="mapPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DepartmentsAndLocationView1" RangeSize="-1" DataControl="AppModuleDataControl"
+              id="DepartmentsAndLocationView1Iterator"/>
+    <searchRegion Binds="DepartmentsAndLocationView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DepartmentsAndLocationView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="DepartmentsAndLocationView1Iterator" id="DepartmentsAndLocationView1">
+      <nodeDefinition DefName="model.vo.DepartmentsAndLocationView" Name="DepartmentsAndLocationView10">
+        <AttrNames>
+          <Item Value="DepartmentName"/>
+          <Item Value="DepartmentId"/>
+          <Item Value="LocationId"/>
+          <Item Value="City"/>
+          <Item Value="StreetAddress"/>
+          <Item Value="PostalCode"/>
+          <Item Value="LocationX"/>
+          <Item Value="LocationY"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <mapTheme IterBinding="DepartmentsAndLocationView1Iterator" id="DepartmentsAndLocationView11"
+              xmlns="http://xmlns.oracle.com/adfm/dvt">
+      <mapThemeDataMap convert="false" mapThemeType="point">
+        <data>
+          <item value="DepartmentName"/>
+        </data>
+        <item type="lat_long" longitude="LocationX" latitude="LocationY" label="DepartmentName"/>
+      </mapThemeDataMap>
+    </mapTheme>
+  </bindings>
+</pageDefinition>
